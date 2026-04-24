@@ -1,11 +1,3 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% A Beamer template for HKUST (GZ)                   %
-% Based on THU beamer theme                          %
-% Author: Yuxuan HU                                  %
-% Date: Aug 2024                                    %
-% LPPL Licensed.                                     %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \documentclass[serif, aspectratio=169]{beamer}
 %\documentclass[serif]{beamer}  % for 4:3 ratio
 \usepackage[T1]{fontenc} 
@@ -17,7 +9,7 @@
 \usepackage[style=numeric, backend=biber]{biblatex}
 \addbibresource{references.bib}
 
-\author{Wenbo Lyu, Wufan Zhao}
+\author{Wenbo Lyu, Wufan Zhao^*}
 \title{Causal discovery in time series data with empirical dynamic modeling}
 \subtitle{The {R} package {tEDM}}
 \institute{
@@ -56,7 +48,7 @@
     \vspace*{-0.6cm}
     \begin{figure}[htpb]
         \begin{center}
-            \includegraphics[keepaspectratio, scale=0.02]{figure/UST.png}
+            \includegraphics[keepaspectratio, scale=0.02]{figure/ust.png}
         \end{center}
     \end{figure}
 \end{frame}
@@ -70,95 +62,247 @@ subsubsectionstyle=show/shaded/hide]
 % Introduction --- --- --- --- --- --- --- --- --- --- --- --- 
 
 \section{Introduction}
-\begin{frame}{Background and Motivation}
-	\frametitle<presentation>{Background and Motivation}
-	\begin{block}{Why to give a presentation:}
-		\begin{itemize}
-			\item show the main arguments and results of your work
-			\item produce interest to read the full paper/report
-			\item goal: be educational and also entertaining \cite{LeCun1998}
-		\end{itemize}
-	\end{block}
-	\begin{block}{Advantages of using \LaTeX ~with the beamer package:}
-		\begin{itemize}
-			\item very easy if the report is already written in \LaTeX
-			\item different themes which are usable in practice
-			\item possibility to create handouts using \emph{beamerarticle}
-		\end{itemize}
-	\end{block}
+
+\begin{frame}
+    \begin{figure}
+        \centering
+        \includegraphics[width=1\textwidth]{figure/mirage_cor.png}
+    \end{figure}
+    A, B and C: positive, negative, and zero correlation; Totally, n = 1000, r = 0.0054, P = 0.864
 \end{frame}
 
-\begin{frame}{Research question}
-
-   this is a Research question.
-
+\begin{frame}
+    \begin{figure}
+        \centering
+        \includegraphics[width=1\textwidth]{figure/why_causal_discovery.png}
+    \end{figure}
 \end{frame}
 
-% Literature Review --- --- --- --- --- --- --- --- --- --- --- 
-\section{Literature Review}
-\begin{frame}{Research gap}
-
-   this is a Literature gap.
-
+\begin{frame}
+    \begin{figure}
+        \centering
+        \includegraphics[width=1\textwidth]{figure/causation_ladder.png}
+    \end{figure}
 \end{frame}
 
-\begin{frame}{Research question}
+% Literature Review --- --- --- --- --- --- --- --- --
+\section{Review of Causal Discovery}
 
-   this is a Literature Review.
-
+\begin{frame}
+    \begin{figure}
+        \centering
+        \includegraphics[height=1\textheight]{figure/overview_causal_discovery.png}
+    \end{figure}
 \end{frame}
 
-% Methods --- --- --- --- --- --- --- --- --- --- --- 
-\section{Methods}
-\begin{frame}{Title}
-    \begin{itemize}
-        \item different themes which are usable in practice
-    \end{itemize}
-\end{frame}
+% \begin{frame}{Two-Column Layout Example}
+%   \begin{columns}[t, onlytextwidth] % t: top-align | onlytextwidth: prevent overflow
+%     \begin{column}{0.48\textwidth}
+%       \textbf{Left Column}
+%       \begin{itemize}
+%         \item Key point one
+%         \item Key point two
+%       \end{itemize}
+%       \includegraphics[width=\linewidth]{example-image-a}
+%     \end{column}
+    
+%     \begin{column}{0.48\textwidth}
+%       \textbf{Right Column}
+%       \begin{equation}
+%         \nabla \cdot \mathbf{E} = \frac{\rho}{\varepsilon_0}
+%       \end{equation}
+%       Place equations, tables, code, or supplementary notes here.
+%     \end{column}
+%   \end{columns}
+% \end{frame}
 
-\begin{frame}{Two-Column Layout Example}
-  \begin{columns}[t, onlytextwidth] % t: top-align | onlytextwidth: prevent overflow
+\begin{frame}
+  \begin{columns}[t!, onlytextwidth]
     \begin{column}{0.48\textwidth}
-      \textbf{Left Column}
-      \begin{itemize}
-        \item Key point one
-        \item Key point two
-      \end{itemize}
-      \includegraphics[width=\linewidth]{example-image-a}
+        \includegraphics[height=1\textheight]{figure/granger_causality.png}
     \end{column}
     
     \begin{column}{0.48\textwidth}
-      \textbf{Right Column}
-      \begin{equation}
-        \nabla \cdot \mathbf{E} = \frac{\rho}{\varepsilon_0}
-      \end{equation}
-      Place equations, tables, code, or supplementary notes here.
+        \textbf{Granger Causality}
+        \begin{align}
+        Y(t) &= \sum_{j=1}^{p} \alpha_j Y(t-j) + \xi_1(t) \label{eq_gc1} \\
+        Y(t) &= \sum_{j=1}^{p} \alpha_j Y(t-j) + \sum_{j=1}^{p} \beta_j X(t-j) + \xi_2(t) \label{eq_gc2}
+        \end{align}
+
+        \noindent
+        A F-test is performed with \textcolor{red}{\textit{the null hypothesis of $Y(t)$ equals to model \eqref{eq_gc1}}} against \textit{the alternative hypothesis of $Y(t)$ equals to model \eqref{eq_gc2}}.
+
+        \vspace{1em}
+
+        \noindent
+        We say that $X$ Granger causes $Y$ if we \textcolor{red}{reject the null hypothesis}.
     \end{column}
   \end{columns}
 \end{frame}
 
 \begin{frame}
-	\frametitle<presentation>{Figures}
-	\begin{figure}
-		\centering
-			\includegraphics[height=5cm]{figure/UST.png}
-		\caption{Logo of the university.}
-		\label{fig:unilogo}
-	\end{figure}
+  \begin{columns}[t!, onlytextwidth]
+    \begin{column}{0.48\textwidth}
+        \includegraphics[height=1\textheight]{figure/transfer_entropy.png}
+    \end{column}
+    
+    \begin{column}{0.48\textwidth}
+        \textbf{Transfer Entropy}
+        \begin{align*}
+        H(X) &= -\sum_{x \in X} p(x) \log_2 p(x) \\
+        T_{Y \to X}(t) &= I(X_t : Y_{t-1} | X_{t-1}) \\
+                    &= H(X_t | X_{t-1}) - H(X_t | X_{t-1} Y_{t-1}') \\
+                    &= \sum p(x_t, x_{t-1}, y_{t-1}) * \log_2 \frac{p(x_t | x_{t-1} y_{t-1}')}{p(x_t | x_{t-1})}
+        \end{align*}
+
+        \begin{itemize}
+            \item Transfer entropy can be considered a \textcolor{red}{\textbf{non-parametric equivalent}} of Granger Causality (it also works for \textit{nonlinear categorical variables}).
+            \item The \textcolor{red}{\textbf{mutual information}} between both is \textcolor{red}{\textbf{symmetric}} (undirected), but the introduced \textcolor{red}{\textbf{time delay}} allows for establishing directionality.
+        \end{itemize}
+    \end{column}
+  \end{columns}
 \end{frame}
 
+% Methods --- --- --- --- --- --- --- --- --- --- --- 
+\section{EDM Methods}
 
-% Results --- --- --- --- --- --- --- --- --- --- --- 
-\section{Results}
 \begin{frame}
-    \begin{itemize}
-        \item different themes
-        \item different themes
-        \item different themes
-        \item different themes
-    \end{itemize}
+\begin{columns}[t!, onlytextwidth]
+    \begin{column}{0.625\textwidth}
+        \begin{figure}
+        \centering
+        \includegraphics[height=0.95\textheight]{figure/edm.png}
+        \label{fig_edm}
+        \end{figure}
+    \end{column}
+    
+    \begin{column}[t!]{0.375\textwidth}
+        \begin{block}{Empirical Dynamic Modeling (EDM)}
+        Time-delay Embedding
+        \begin{equation*}\label{eq_ts_embedding}
+        \begin{split}
+        M_{x} &= \left[ x(t),\, x(t-\tau),\, \ldots,\, x\big(t-(E - 1)\tau\big) \right] \\
+        M_{y} &= \left[ y(t),\, y(t-\tau),\, \ldots,\, y\big(t-(E - 1)\tau\big) \right]
+        \end{split}
+        \end{equation*}
+
+		Mutual Cross Mapping
+        \begin{equation*}\label{eq_cross_mapping}
+        \hat{X}_t \mid M_y = \sum_{i=1}^k \left( \omega_{ti} \, X_{ti} \mid M_y \right)
+        \end{equation*}
+        \begin{equation*}\label{eq_ccm_rho}
+        \rho = \frac{\mathrm{Cov}\left( X, \hat{X} \mid M_y \right)}{ \sqrt{\mathrm{Var}(X) \, \mathrm{Var}\left( \hat{X} \mid M_y \right) } },
+        \end{equation*}
+    \end{block}
+    \end{column}
+  \end{columns}
 \end{frame}
 
+\begin{frame}
+\begin{columns}[t!, onlytextwidth]
+    \begin{column}{0.575\textwidth}
+        \begin{figure}
+        \centering
+        \includegraphics[height=0.95\textheight]{figure/pcm.png}
+        \label{fig_edm}
+        \end{figure}
+    \end{column}
+    
+    \begin{column}[t!]{0.425\textwidth}
+        \begin{block}{Partial Cross Mapping (PCM)}
+        Accounting for indirect causal influences mediated by third variables
+        \begin{equation*}\label{eq_pcm_zhat}
+        \hat{Z}_t \mid M_y = \sum_{i=1}^k \left( \omega_{ti} \, Z_{ti} \mid M_y \right).
+        \end{equation*}
+        \begin{equation*}\label{eq_pcm_x_zhat}
+        \hat{X}^{(Z)}_t \mid M_{\hat{Z}} = \sum_{i=1}^k \left( \omega^{(Z)}_{ti} \, X_{ti} \mid M_{\hat{Z}} \right),
+        \end{equation*}
+        \begin{equation*}\label{eq_pcm_partial_corr}
+        \rho_{X \to Y \mid Z} = \frac{ \rho_{X,\, \hat{X}} - \rho_{X,\, \hat{X}^{(Z)}} \rho_{\hat{X},\, \hat{X}^{(Z)}} }
+        {\sqrt{\left( 1 - \rho_{X,\, \hat{X}^{(Z)}}^2 \right) \left( 1 - \rho_{\hat{X},\, \hat{X}^{(Z)}}^2 \right) }},
+        \end{equation*}
+    \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+\begin{columns}[t!, onlytextwidth]
+    \begin{column}{0.65\textwidth}
+        \begin{figure}
+        \centering
+        \includegraphics[height=0.9\textheight]{figure/cmc.png}
+        \label{fig_edm}
+        \end{figure}
+    \end{column}
+    
+    \begin{column}[t!]{0.35\textwidth}
+        \begin{block}{Cross Mapping Cardinality (CMC)}
+        Employing neighborhood topological consistency in place of direct prediction
+        \begin{equation*}\label{eq_cmc_ic_ik_delong}
+        IC_{i,k} = \left| M_y^{nn}(i,k) \cap M_y^{nn}\big(M_x^{nn}(i,k),k\big) \right|
+        \end{equation*}
+        \begin{equation*}\label{eq_cmc_ic_k_delong}
+        IC_k = \frac{1}{T} \sum_{i=1}^T IC_{i,k},
+        \end{equation*}
+        \begin{equation*}\label{eq_cmc_ic_curve_delong}
+        IC_{\text{curve}} = \{ IC_k \mid k = 1, 2, \dots, T \}.
+        \end{equation*}
+    \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+\begin{columns}[t!, onlytextwidth]
+    \begin{column}{0.65\textwidth}
+        \begin{figure}
+        \centering
+        \includegraphics[height=0.9\textheight]{figure/cic.png}
+        \label{fig_edm}
+        \end{figure}
+    \end{column}
+    
+    \begin{column}[t!]{0.35\textwidth}
+        \begin{block}{Dynamical Causality under Latent Confounders (CIC)}
+        \begin{itemize}
+            \item Mathematically separates coupled dynamics into orthogonal common (confounder) and private subspaces.
+                
+            \item Accurately infers causal directions using \textbf{only two observed variables}
+        \end{itemize}
+        \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+
+% The tEDM package --- --- --- --- --- --- --- --- 
+\section{The \textit{tEDM} Package}
+
+\begin{frame}
+\begin{figure}
+\centering
+\includegraphics[width=1.05\textwidth]{figure/pkg_survey.png}
+\label{fig_pkgs}
+\end{figure}
+\textbf{tEDM integrates the state-of-the-art EDM causal discovery algorithms, with enhanced spatial relationship representations.}
+\end{frame}
+
+\begin{frame}
+\textbf{Overview of the source code architecture of the tEDM package}
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth]{figure/tEDM_pkg.png}
+\label{fig_pkgs}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+    \begin{figure}
+        \centering
+        \includegraphics[width=1\textwidth]{figure/tEDM_demo.png}
+    \end{figure}
+\end{frame}
 
 % --- Thank you slide ---
 \begin{frame}

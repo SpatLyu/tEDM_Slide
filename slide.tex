@@ -6,8 +6,6 @@
 \usepackage{latexsym,amsmath,xcolor,multicol,booktabs,calligra}
 \usepackage{graphicx,pstricks,listings,stackengine}
 \usepackage{lipsum}
-\usepackage[style=numeric, backend=biber]{biblatex}
-\addbibresource{references.bib}
 
 \author{Wenbo Lyu, Wufan Zhao^*}
 \title{Causal discovery in time series data with empirical dynamic modeling}
@@ -191,7 +189,7 @@ subsubsectionstyle=show/shaded/hide]
         \hat{X}_t \mid M_y = \sum_{i=1}^k \left( \omega_{ti} \, X_{ti} \mid M_y \right)
         \end{equation*}
         \begin{equation*}\label{eq_ccm_rho}
-        \rho = \frac{\mathrm{Cov}\left( X, \hat{X} \mid M_y \right)}{ \sqrt{\mathrm{Var}(X) \, \mathrm{Var}\left( \hat{X} \mid M_y \right) } },
+        \rho = \frac{\mathrm{Cov}\left( X, \hat{X} \mid M_y \right)}{ \sqrt{\mathrm{Var}(X) \, \mathrm{Var}\left( \hat{X} \mid M_y \right) } }
         \end{equation*}
     \end{block}
     \end{column}
@@ -204,7 +202,7 @@ subsubsectionstyle=show/shaded/hide]
         \begin{figure}
         \centering
         \includegraphics[height=0.95\textheight]{figure/pcm.png}
-        \label{fig_edm}
+        \label{fig_pcm}
         \end{figure}
     \end{column}
     
@@ -212,14 +210,14 @@ subsubsectionstyle=show/shaded/hide]
         \begin{block}{Partial Cross Mapping (PCM)}
         Accounting for indirect causal influences mediated by third variables
         \begin{equation*}\label{eq_pcm_zhat}
-        \hat{Z}_t \mid M_y = \sum_{i=1}^k \left( \omega_{ti} \, Z_{ti} \mid M_y \right).
+        \hat{Z}_t \mid M_y = \sum_{i=1}^k \left( \omega_{ti} \, Z_{ti} \mid M_y \right)
         \end{equation*}
         \begin{equation*}\label{eq_pcm_x_zhat}
-        \hat{X}^{(Z)}_t \mid M_{\hat{Z}} = \sum_{i=1}^k \left( \omega^{(Z)}_{ti} \, X_{ti} \mid M_{\hat{Z}} \right),
+        \hat{X}^{(Z)}_t \mid M_{\hat{Z}} = \sum_{i=1}^k \left( \omega^{(Z)}_{ti} \, X_{ti} \mid M_{\hat{Z}} \right)
         \end{equation*}
         \begin{equation*}\label{eq_pcm_partial_corr}
         \rho_{X \to Y \mid Z} = \frac{ \rho_{X,\, \hat{X}} - \rho_{X,\, \hat{X}^{(Z)}} \rho_{\hat{X},\, \hat{X}^{(Z)}} }
-        {\sqrt{\left( 1 - \rho_{X,\, \hat{X}^{(Z)}}^2 \right) \left( 1 - \rho_{\hat{X},\, \hat{X}^{(Z)}}^2 \right) }},
+        {\sqrt{\left( 1 - \rho_{X,\, \hat{X}^{(Z)}}^2 \right) \left( 1 - \rho_{\hat{X},\, \hat{X}^{(Z)}}^2 \right) }}
         \end{equation*}
     \end{block}
     \end{column}
@@ -232,7 +230,7 @@ subsubsectionstyle=show/shaded/hide]
         \begin{figure}
         \centering
         \includegraphics[height=0.9\textheight]{figure/cmc.png}
-        \label{fig_edm}
+        \label{fig_cmc}
         \end{figure}
     \end{column}
     
@@ -243,10 +241,10 @@ subsubsectionstyle=show/shaded/hide]
         IC_{i,k} = \left| M_y^{nn}(i,k) \cap M_y^{nn}\big(M_x^{nn}(i,k),k\big) \right|
         \end{equation*}
         \begin{equation*}\label{eq_cmc_ic_k_delong}
-        IC_k = \frac{1}{T} \sum_{i=1}^T IC_{i,k},
+        IC_k = \frac{1}{T} \sum_{i=1}^T IC_{i,k}
         \end{equation*}
         \begin{equation*}\label{eq_cmc_ic_curve_delong}
-        IC_{\text{curve}} = \{ IC_k \mid k = 1, 2, \dots, T \}.
+        IC_{\text{curve}} = \{ IC_k \mid k = 1, 2, \dots, T \}
         \end{equation*}
     \end{block}
     \end{column}
@@ -259,7 +257,7 @@ subsubsectionstyle=show/shaded/hide]
         \begin{figure}
         \centering
         \includegraphics[height=0.9\textheight]{figure/cic.png}
-        \label{fig_edm}
+        \label{fig_cic}
         \end{figure}
     \end{column}
     
@@ -283,7 +281,6 @@ subsubsectionstyle=show/shaded/hide]
 \begin{figure}
 \centering
 \includegraphics[width=1.05\textwidth]{figure/pkg_survey.png}
-\label{fig_pkgs}
 \end{figure}
 \textbf{tEDM integrates the state-of-the-art EDM causal discovery algorithms, with enhanced spatial relationship representations.}
 \end{frame}
@@ -293,15 +290,14 @@ subsubsectionstyle=show/shaded/hide]
 \begin{figure}
 \centering
 \includegraphics[width=1\textwidth]{figure/tEDM_pkg.png}
-\label{fig_pkgs}
 \end{figure}
 \end{frame}
 
 \begin{frame}
-    \begin{figure}
-        \centering
-        \includegraphics[width=1\textwidth]{figure/tEDM_demo.png}
-    \end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth]{figure/tEDM_demo.png}
+\end{figure}
 \end{frame}
 
 % --- Thank you slide ---

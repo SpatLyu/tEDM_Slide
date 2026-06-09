@@ -135,6 +135,38 @@ subsubsectionstyle=show/shaded/hide]
     \end{column}
     
     \begin{column}[t!]{0.375\textwidth}
+        \begin{block}{Empirical Dynamic Modeling}
+        \texttt{Time-delay Embedding}
+        \begin{equation*}
+        \begin{split}
+        M_{x} &= \left[ x(t),\, x(t-\tau),\, \ldots,\, x\big(t-(E - 1)\tau\big) \right] \\
+        M_{y} &= \left[ y(t),\, y(t-\tau),\, \ldots,\, y\big(t-(E - 1)\tau\big) \right]
+        \end{split}
+        \end{equation*}
+
+		\texttt{Mutual Cross Mapping}
+        \begin{equation*}\label{eq_cross_mapping}
+        \hat{X}_t \mid M_y = \sum_{i=1}^k \left( \omega_{ti} \, X_{ti} \mid M_y \right)
+        \end{equation*}
+        \begin{equation*}\label{eq_ccm_rho}
+        \rho = \frac{\mathrm{Cov}\left( X, \hat{X} \mid M_y \right)}{ \sqrt{\mathrm{Var}(X) \, \mathrm{Var}\left( \hat{X} \mid M_y \right) } },
+        \end{equation*}
+    \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+\begin{columns}[t!, onlytextwidth]
+    \begin{column}{0.575\textwidth}
+        \begin{figure}
+        \centering
+        \includegraphics[height=0.95\textheight]{figure/pcm.png}
+        \label{fig_edm}
+        \end{figure}
+    \end{column}
+    
+    \begin{column}[t!]{0.425\textwidth}
         \textbf{Empirical Dynamic Modeling}
         \texttt{Time-delay Embedding}
         \begin{equation*}
@@ -157,7 +189,7 @@ subsubsectionstyle=show/shaded/hide]
 \end{frame}
 
 
-% Results --- --- --- --- --- --- --- --- --- --- --- 
+% The tEDM package --- --- --- --- --- --- --- --- 
 \section{The \textit{tEDM} package}
 \begin{frame}
     \begin{itemize}

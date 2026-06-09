@@ -130,13 +130,23 @@ subsubsectionstyle=show/shaded/hide]
 \end{frame}
 
 \begin{frame}
-	\frametitle<presentation>{Figures}
-	\begin{figure}
-		\centering
-			\includegraphics[height=5cm]{figure/ust.png}
-		\caption{Logo of the university.}
-		\label{fig:unilogo}
-	\end{figure}
+\begin{columns}[t, onlytextwidth]
+    \begin{column}{0.75\textwidth}
+        \begin{figure}
+        \centering
+        \includegraphics[height=0.95\textheight]{figure/edm.png}
+        \label{fig_edm}
+        \end{figure}
+        \end{column}
+    
+    \begin{column}{0.25\textwidth}
+      \textbf{Right Column}
+      \begin{equation}
+        \nabla \cdot \mathbf{E} = \frac{\rho}{\varepsilon_0}
+      \end{equation}
+      Place equations, tables, code, or supplementary notes here.
+    \end{column}
+  \end{columns}
 \end{frame}
 
 

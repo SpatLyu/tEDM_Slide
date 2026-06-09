@@ -102,11 +102,6 @@ subsubsectionstyle=show/shaded/hide]
 
 % Methods --- --- --- --- --- --- --- --- --- --- --- 
 \section{EDM Methods}
-\begin{frame}{Title}
-    \begin{itemize}
-        \item different themes which are usable in practice
-    \end{itemize}
-\end{frame}
 
 \begin{frame}{Two-Column Layout Example}
   \begin{columns}[t, onlytextwidth] % t: top-align | onlytextwidth: prevent overflow
@@ -130,21 +125,21 @@ subsubsectionstyle=show/shaded/hide]
 \end{frame}
 
 \begin{frame}
-\begin{columns}[t, onlytextwidth]
-    \begin{column}{0.75\textwidth}
+\begin{columns}[t!, onlytextwidth]
+    \begin{column}{0.65\textwidth}
         \begin{figure}
         \centering
         \includegraphics[height=0.95\textheight]{figure/edm.png}
         \label{fig_edm}
         \end{figure}
-        \end{column}
+    \end{column}
     
-    \begin{column}{0.25\textwidth}
-      \textbf{Right Column}
-      \begin{equation}
-        \nabla \cdot \mathbf{E} = \frac{\rho}{\varepsilon_0}
-      \end{equation}
-      Place equations, tables, code, or supplementary notes here.
+    \begin{column}[t!]{0.35\textwidth}
+        \textbf{Empirical Dynamic Modeling}
+		\begin{itemize}
+			\item Time-delay embedding
+			\item Mutual cross mapping
+		\end{itemize}
     \end{column}
   \end{columns}
 \end{frame}

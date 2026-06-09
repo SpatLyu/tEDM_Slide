@@ -137,7 +137,7 @@ subsubsectionstyle=show/shaded/hide]
     \begin{column}[t!]{0.375\textwidth}
         \begin{block}{Empirical Dynamic Modeling (EDM)}
         \texttt{Time-delay Embedding}
-        \begin{equation*}
+        \begin{equation*}\label{eq_ts_embedding}
         \begin{split}
         M_{x} &= \left[ x(t),\, x(t-\tau),\, \ldots,\, x\big(t-(E - 1)\tau\big) \right] \\
         M_{y} &= \left[ y(t),\, y(t-\tau),\, \ldots,\, y\big(t-(E - 1)\tau\big) \right]
@@ -168,20 +168,16 @@ subsubsectionstyle=show/shaded/hide]
     
     \begin{column}[t!]{0.425\textwidth}
         \begin{block}{Partial Cross Mapping (PCM)}
-        \texttt{Time-delay Embedding}
-        \begin{equation*}
-        \begin{split}
-        M_{x} &= \left[ x(t),\, x(t-\tau),\, \ldots,\, x\big(t-(E - 1)\tau\big) \right] \\
-        M_{y} &= \left[ y(t),\, y(t-\tau),\, \ldots,\, y\big(t-(E - 1)\tau\big) \right]
-        \end{split}
+        Accounting for indirect causal influences mediated by third variables
+        \begin{equation*}\label{eq_pcm_zhat}
+        \hat{Z}_t \mid M_y = \sum_{i=1}^k \left( \omega_{ti} \, Z_{ti} \mid M_y \right).
         \end{equation*}
-
-		\texttt{Mutual Cross Mapping}
-        \begin{equation*}\label{eq_cross_mapping}
-        \hat{X}_t \mid M_y = \sum_{i=1}^k \left( \omega_{ti} \, X_{ti} \mid M_y \right)
+        \begin{equation*}\label{eq_pcm_x_zhat}
+        \hat{X}^{(Z)}_t \mid M_{\hat{Z}} = \sum_{i=1}^k \left( \omega^{(Z)}_{ti} \, X_{ti} \mid M_{\hat{Z}} \right),
         \end{equation*}
-        \begin{equation*}\label{eq_ccm_rho}
-        \rho = \frac{\mathrm{Cov}\left( X, \hat{X} \mid M_y \right)}{ \sqrt{\mathrm{Var}(X) \, \mathrm{Var}\left( \hat{X} \mid M_y \right) } },
+        \begin{equation*}\label{eq_pcm_partial_corr}
+        \rho_{X \to Y \mid Z} = \frac{ \rho_{X,\, \hat{X}} - \rho_{X,\, \hat{X}^{(Z)}} \rho_{\hat{X},\, \hat{X}^{(Z)}} }
+        {\sqrt{\left( 1 - \rho_{X,\, \hat{X}^{(Z)}}^2 \right) \left( 1 - \rho_{\hat{X},\, \hat{X}^{(Z)}}^2 \right) }},
         \end{equation*}
     \end{block}
     \end{column}

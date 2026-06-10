@@ -86,7 +86,7 @@ subsubsectionstyle=show/shaded/hide]
 
 \end{frame}
 
-% Literature Review --- --- --- --- --- --- --- --- --- --- --- 
+% Literature Review --- --- --- --- --- --- --- --- --
 \section{Review of Causal Discovery}
 
 \begin{frame}
@@ -95,9 +95,6 @@ subsubsectionstyle=show/shaded/hide]
         \includegraphics[height=1\textheight]{figure/overview_causal_discovery.png}
     \end{figure}
 \end{frame}
-
-% Methods --- --- --- --- --- --- --- --- --- --- --- 
-\section{EDM Methods}
 
 % \begin{frame}{Two-Column Layout Example}
 %   \begin{columns}[t, onlytextwidth] % t: top-align | onlytextwidth: prevent overflow
@@ -119,6 +116,33 @@ subsubsectionstyle=show/shaded/hide]
 %     \end{column}
 %   \end{columns}
 % \end{frame}
+
+\begin{frame}
+  \begin{columns}[t!, onlytextwidth]
+    \begin{column}{0.48\textwidth}
+        \includegraphics[height=1\textheight]{figure/granger_causality.png}
+    \end{column}
+    
+    \begin{column}{0.48\textwidth}
+        \textbf{Granger Causality}
+        \begin{align}
+        Y(t) &= \sum_{j=1}^{p} \alpha_j Y(t-j) + \text{error}_1(t) \label{eq:model1} \\
+        Y(t) &= \sum_{j=1}^{p} \alpha_j Y(t-j) + \sum_{j=1}^{p} \beta_j X(t-j) + \text{error}_2(t) \label{eq:model2}
+\end{align}
+
+\noindent
+A F-test is performed with \textcolor{red}{\textit{the null hypothesis of $Y(t)$ equals to model \eqref{eq:model1}}} against \textit{the alternative hypothesis of $Y(t)$ equals to model \eqref{eq:model2}}.
+
+\vspace{1em}
+
+\noindent
+We say that $X$ Granger causes $Y$ if we \textcolor{red}{reject the null hypothesis}.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% Methods --- --- --- --- --- --- --- --- --- --- --- 
+\section{EDM Methods}
 
 \begin{frame}
 \begin{columns}[t!, onlytextwidth]

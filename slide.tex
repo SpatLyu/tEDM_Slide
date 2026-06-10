@@ -126,17 +126,41 @@ subsubsectionstyle=show/shaded/hide]
     \begin{column}{0.48\textwidth}
         \textbf{Granger Causality}
         \begin{align}
+        Y(t) &= \sum_{j=1}^{p} \alpha_j Y(t-j) + \xi_1(t) \label{eq_gc1} \\
+        Y(t) &= \sum_{j=1}^{p} \alpha_j Y(t-j) + \sum_{j=1}^{p} \beta_j X(t-j) + \xi_2(t) \label{eq_gc2}
+        \end{align}
+
+        \noindent
+        A F-test is performed with \textcolor{red}{\textit{the null hypothesis of $Y(t)$ equals to model \eqref{eq_gc1}}} against \textit{the alternative hypothesis of $Y(t)$ equals to model \eqref{eq_gc2}}.
+
+        \vspace{1em}
+
+        \noindent
+        We say that $X$ Granger causes $Y$ if we \textcolor{red}{reject the null hypothesis}.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \begin{columns}[t!, onlytextwidth]
+    \begin{column}{0.48\textwidth}
+        \includegraphics[height=1\textheight]{figure/transfer_entropy.png}
+    \end{column}
+    
+    \begin{column}{0.48\textwidth}
+        \textbf{Transfer Entropy}
+        \begin{align}
         Y(t) &= \sum_{j=1}^{p} \alpha_j Y(t-j) + \text{error}_1(t) \label{eq:model1} \\
         Y(t) &= \sum_{j=1}^{p} \alpha_j Y(t-j) + \sum_{j=1}^{p} \beta_j X(t-j) + \text{error}_2(t) \label{eq:model2}
-\end{align}
+        \end{align}
 
-\noindent
-A F-test is performed with \textcolor{red}{\textit{the null hypothesis of $Y(t)$ equals to model \eqref{eq:model1}}} against \textit{the alternative hypothesis of $Y(t)$ equals to model \eqref{eq:model2}}.
+        \noindent
+        A F-test is performed with \textcolor{red}{\textit{the null hypothesis of $Y(t)$ equals to model \eqref{eq:model1}}} against \textit{the alternative hypothesis of $Y(t)$ equals to model \eqref{eq:model2}}.
 
-\vspace{1em}
+        \vspace{1em}
 
-\noindent
-We say that $X$ Granger causes $Y$ if we \textcolor{red}{reject the null hypothesis}.
+        \noindent
+        We say that $X$ Granger causes $Y$ if we \textcolor{red}{reject the null hypothesis}.
     \end{column}
   \end{columns}
 \end{frame}

@@ -223,17 +223,12 @@ subsubsectionstyle=show/shaded/hide]
     
     \begin{column}[t!]{0.35\textwidth}
         \begin{block}{Dynamical Causality under Latent Confounders (CIC)}
-        Accounting for indirect causal influences mediated by third variables
-        \begin{equation*}\label{eq_cmc_ic_ik_delong}
-        IC_{i,k} = \left| M_y^{nn}(i,k) \cap M_y^{nn}\big(M_x^{nn}(i,k),k\big) \right|
-        \end{equation*}
-        \begin{equation*}\label{eq_cmc_ic_k_delong}
-        IC_k = \frac{1}{T} \sum_{i=1}^T IC_{i,k},
-        \end{equation*}
-        \begin{equation*}\label{eq_cmc_ic_curve_delong}
-        IC_{\text{curve}} = \{ IC_k \mid k = 1, 2, \dots, T \}.
-        \end{equation*}
-    \end{block}
+        \begin{itemize}
+            \item Mathematically separates coupled dynamics into orthogonal common (confounder) and private subspaces.
+                
+            \item Accurately infers causal directions using \textbf{only two observed variables}
+        \end{itemize}
+        \end{block}
     \end{column}
   \end{columns}
 \end{frame}
